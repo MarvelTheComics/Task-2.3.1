@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<table border="1">
+    <tr>
+        <th>ID</th>
+        <th>Имя</th>
+        <th>Фамилия</th>
+        <th>Возраст</th>
+        <th>Цвет глаз</th>
+    </tr>
+    <tr>
+        <td th:text="${user.id}"></td>
+        <td th:text="${user.name}"></td>
+        <td th:text="${user.secondName}"></td>
+        <td th:text="${user.age}"></td>
+        <td th:text="${user.eyeColor}"></td>
+    </tr>
+</table>
+
+<form th:method="POST" th:action="@{/users/edit}" th:object="${user}">
+    <input type="hidden" th:field="*{id}">
+    <label for="name">Имя</label>
+    <input type="text" th:field="*{name}" id="name">
+    <label for="secondName">Фамилия</label>
+    <input type="text" th:field="*{secondName}" id="secondName">
+    <label for="age">Возраст</label>
+    <input type="text" th:field="*{age}" id="age">
+    <label for="eyeColor">Цвет глаз</label>
+    <input type="text" th:field="*{eyeColor}" id="eyeColor">
+    <input type="submit" value="Изменить">
+</form>
+
+</body>
+</html>
