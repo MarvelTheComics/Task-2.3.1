@@ -14,13 +14,11 @@ public class UserDaoImp implements UserDao{
     @PersistenceContext
     private EntityManager entityManager;
 
-    @Transactional
     @Override
     public void add(User user) {
         entityManager.persist(user);
     }
 
-    @Transactional
     @Override
     public void delete(Integer id) {
         User user = entityManager.find(User.class, id);
@@ -29,19 +27,16 @@ public class UserDaoImp implements UserDao{
         }
     }
 
-    @Transactional
     @Override
     public List<User> getUsers() {
         return entityManager.createQuery("FROM User", User.class).getResultList();
     }
 
-    @Transactional
     @Override
     public void update(User user) {
         entityManager.merge(user);
     }
 
-    @Transactional
     @Override
     public User getUserByID(Integer id) {
         return entityManager.find(User.class, id);
